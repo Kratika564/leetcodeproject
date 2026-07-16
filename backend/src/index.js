@@ -12,7 +12,7 @@ const videoRouter=require("./routes/videoCreator")
 const cors=require('cors')
 
 app.use(cors({
-    origin: 'https://leetcodeproject-frontend-cfjp.onrender.com/',
+    origin: 'https://leetcodeproject-frontend-cfjp.onrender.com',
     credentials: true 
 }))
 
