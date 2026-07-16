@@ -1,7 +1,7 @@
 import axios from "axios"
 
 const axiosClient =  axios.create({
-    baseURL: 'http://localhost:3000',
+    baseURL: 'https://leetcodeproject-backend.onrender.com/',
     withCredentials: true,//this is used to pass to cookies 
     headers: {
         'Content-Type': 'application/json'
