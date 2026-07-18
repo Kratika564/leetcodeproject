@@ -132,6 +132,13 @@ const runCode = async (req, res) => {
     const submitResult = await submitBatch(submissions);
 
     const resultToken = submitResult.map((value) => value.token);
+   const languageId = getLanguageById(language);
+   const submissions = problem.visibleTestCases.map((testcase)=>({
+       source_code:code,
+       language_id: languageId,
+       stdin: testcase.input,
+       expected_output: testcase.output
+   }));
 
     const testResult = await submitToken(resultToken);
 
@@ -144,6 +151,11 @@ const runCode = async (req, res) => {
 
     console.log(finalResult);
 
+   const submitResult = await submitBatch(submissions);
+   const resultToken = submitResult.map((value)=> value.token);
+   const testResult = await submitToken(resultToken);
+   console.log(testResult);
+  // console.log("Status:", result.status?.id, result.status?.description);
     let testCasesPassed = 0;
     let runtime = 0;
     let memory = 0;
@@ -163,6 +175,21 @@ const runCode = async (req, res) => {
           test.message ||
           test.status.description;
       }
+    for(const test of testResult){
+        if(test.status.id==3){
+           testCasesPassed++;
+           runtime = runtime+parseFloat(test.time)
+           memory = Math.max(memory,test.memory);
+        }else{
+          if(test.status.id==4){
+            status = false
+            errorMessage = test.stderr
+          }
+          else{
+            status = false
+            errorMessage = test.stderr
+          }
+        }
     }
 
     return res.status(200).json({
@@ -174,7 +201,8 @@ const runCode = async (req, res) => {
       memory,
       error: errorMessage,
     });
-  } catch (err) {
+  } 
+}catch (err) {
     console.error(err);
     return res.status(500).send("Internal Server Error " + err.message);
   }
