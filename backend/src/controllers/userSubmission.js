@@ -146,12 +146,12 @@ const runCode = async(req,res)=>{
     let errorMessage = null;
 
     for(const test of testResult){
-        if(test.status_id==3){
+        if(test.status.id==3){
            testCasesPassed++;
            runtime = runtime+parseFloat(test.time)
            memory = Math.max(memory,test.memory);
         }else{
-          if(test.status_id==4){
+          if(test.status.id==4){
             status = false
             errorMessage = test.stderr
           }
