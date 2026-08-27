@@ -7,7 +7,7 @@ import { useNavigate, NavLink } from 'react-router';
 import { registerUser } from '../authSlice';
 
 const signupSchema = z.object({
-  firstName: z.string().min(3, "Minimum character should be 3"),
+  name: z.string().min(3, "Minimum character should be 3"),
   emailId: z.string().email("Invalid Email"),
   password: z.string().min(8, "Password is too weak")
 });
@@ -31,6 +31,7 @@ function Signup() {
   }, [isAuthenticated, navigate]);
 
   const onSubmit = (data) => {
+     
     dispatch(registerUser(data));
   };
 
@@ -48,11 +49,11 @@ function Signup() {
               <input
                 type="text"
                 placeholder="John"
-                className={`input input-bordered w-full ${errors.firstName ? 'input-error' : ''}`} 
-                {...register('firstName')}
+                className={`input input-bordered w-full ${errors.name ? 'input-error' : ''}`} 
+                {...register('name')}
               />
-              {errors.firstName && (
-                <span className="text-error text-sm mt-1">{errors.firstName.message}</span>
+              {errors.name && (
+                <span className="text-error text-sm mt-1">{errors.name.message}</span>
               )}
             </div>
 

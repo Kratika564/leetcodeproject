@@ -2,10 +2,7 @@ const { GoogleGenAI } = require("@google/genai");
 
 
 const solveDoubt = async(req , res)=>{
-
-
     try{
-
         const {messages,title,description,testCases,startCode} = req.body;
         const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_KEY });
        

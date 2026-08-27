@@ -28,6 +28,7 @@ function App(){
   }
 
   //now build the functionality that the user is already sign up then direct it to sign up or login page
+  
    return(
    <>
    <Routes>
@@ -43,8 +44,6 @@ function App(){
       {/* by it normal user can access the form but can not submit problem
     <Route path="/admin" element={<AdminPanel/>}></Route>
        */}  
-
-      
    </Routes>
    </>
    )
