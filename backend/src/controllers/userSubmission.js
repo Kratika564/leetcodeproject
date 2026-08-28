@@ -132,13 +132,6 @@ const runCode = async (req, res) => {
     const submitResult = await submitBatch(submissions);
 
     const resultToken = submitResult.map((value) => value.token);
-   const languageId = getLanguageById(language);
-   const submissions = problem.visibleTestCases.map((testcase)=>({
-       source_code:code,
-       language_id: languageId,
-       stdin: testcase.input,
-       expected_output: testcase.output
-   }));
 
     const testResult = await submitToken(resultToken);
 
@@ -150,11 +143,6 @@ const runCode = async (req, res) => {
     }));
 
     console.log(finalResult);
-
-   const submitResult = await submitBatch(submissions);
-   const resultToken = submitResult.map((value)=> value.token);
-   const testResult = await submitToken(resultToken);
-   console.log(testResult);
   // console.log("Status:", result.status?.id, result.status?.description);
     let testCasesPassed = 0;
     let runtime = 0;
