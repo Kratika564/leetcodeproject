@@ -42,12 +42,3 @@ const InitalizeConnection=async ()=>{
   }
 }
 InitalizeConnection()
-//first connect to database then server start listening
-
-// main()
-//   .then(async()=>{
-//     app.listen(process.env.PORT,()=>{
-//          console.log("Server listening at port number: "+ process.env.PORT);
-//     })
-//   })
-//   .catch(err=>console.log('Error Occurred'+err));
