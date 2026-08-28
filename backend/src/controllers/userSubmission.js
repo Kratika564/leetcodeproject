@@ -83,12 +83,15 @@ const submitCode=async(req,res)=>{
     // req.result == user Information
 
      
-    if(!req.result.problemSolved.includes(problemId)){
+   
+    const accepted = (status == 'accepted')
+    if(accepted)
+    {
+      if(!req.result.problemSolved.includes(problemId)){
       req.result.problemSolved.push(problemId);
       await req.result.save();
     }
-
-      const accepted = (status == 'accepted')
+    }
     res.status(201).json({
       accepted,
       totalTestCases: submittedResult.testCasesTotal,
