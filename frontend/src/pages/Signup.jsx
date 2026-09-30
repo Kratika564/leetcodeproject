@@ -41,7 +41,7 @@ function Signup() {
         <div className="card-body">
           <h2 className="card-title justify-center text-3xl mb-6">Leetcode</h2> {/* Added mb-6 for spacing */}
           <form onSubmit={handleSubmit(onSubmit)}>
-            {/* First Name Field */}
+           {/* First Name Field */}
             <div className="form-control">
               <label className="label">
                 <span className="label-text">First Name</span>
@@ -49,11 +49,11 @@ function Signup() {
               <input
                 type="text"
                 placeholder="John"
-                className={`input input-bordered w-full ${errors.name ? 'input-error' : ''}`} 
-                {...register('name')}
+                className={`input input-bordered w-full ${errors.firstName ? 'input-error' : ''}`} 
+                {...register('firstName')}
               />
-              {errors.name && (
-                <span className="text-error text-sm mt-1">{errors.name.message}</span>
+              {errors.firstName && (
+                <span className="text-error text-sm mt-1">{errors.firstName.message}</span>
               )}
             </div>
 
