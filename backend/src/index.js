@@ -10,11 +10,14 @@ const submitRouter=require('./routes/submit')
 const aiRouter = require("./routes/aiChatting")
 const videoRouter=require("./routes/videoCreator")
 const cors=require('cors')
-
 app.use(cors({
-    origin: 'https://leetcodeproject-frontend-cfjp.onrender.com',
-    credentials: true 
-}))
+    origin: [
+        "https://leetcodeproject-frontend-cfjp.onrender.com"
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true
+}));
 app.set("trust proxy", 1);
 app.use(express.json());
 app.use(cookieParser());
